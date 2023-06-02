@@ -1,0 +1,18 @@
+/* #main-box {
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap: wrap; */
+/* gap: 3rem; */
+/* justify-content: center;
+  align-items: center; */
+
+#job-container {
+  background-color: white;
+  border: 5px;
+  border-radius: 10px;
+  height: 300px;
+  padding: 1rem;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
