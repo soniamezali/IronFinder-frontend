@@ -1,0 +1,39 @@
+.layout-banner {
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  border-bottom: 0.5px solid black;
+  width: 100vw;
+  height: 10vh;
+}
+
+.home-logo {
+  width: 40px;
+  height: 40px;
+  padding: 1rem;
+  margin-right: 300px;
+}
+
+.title-banner {
+  color: red;
+}
+
+.log-in {
+  color: red;
+}
+
+.log-out {
+  color: red;
+}
+
+.sign-up {
+  color: red;
+}
+
+.create-offer {
+  color: red;
+}
+
+.my-profile-link {
+  color: red;
+}
