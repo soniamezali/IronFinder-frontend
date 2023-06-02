@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import NavbarLogOut from "../components/NavbarLogOut";
 import JobCard from "../components/JobCard";
 import Footer from "../components/footer";
+import "./MainHomePage.css";
 
 function MainHomepage() {
   return (
@@ -11,7 +12,15 @@ function MainHomepage() {
         <div>
           <NavbarLogOut />
         </div>
-        <div>
+        <div id="job-cards">
+          <JobCard />
+          <JobCard />
+          <JobCard />
+          <JobCard />
+          <JobCard />
+          <JobCard />
+          <JobCard />
+          <JobCard />
           <JobCard />
         </div>
 

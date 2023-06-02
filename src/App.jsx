@@ -1,7 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import MainHomepage from "../pages/MainHomepage";
-import JobCard from "../components/JobCard";
 
 function App() {
   return (
