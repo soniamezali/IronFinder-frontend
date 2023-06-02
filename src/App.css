@@ -4,7 +4,7 @@
   padding: 2rem;
   text-align: center;
 }
-
+/*
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -33,10 +33,25 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
 
 .read-the-docs {
   color: #888;
+} */
+/* .card {
+  padding: 2em;
+} */
+/* #body {
+  display: flex;
+  flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+} */
+
+#body {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
 }
