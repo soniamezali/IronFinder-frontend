@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./navbar.css";
 
-function NavbarMainHomePage() {
+function NavbarLogOut() {
   return (
     <>
       <nav>
@@ -26,4 +27,4 @@ function NavbarMainHomePage() {
   );
 }
 
-export default NavbarMainHomePage;
+export default NavbarLogOut;
