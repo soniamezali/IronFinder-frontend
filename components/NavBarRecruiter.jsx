@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function NavbarJobSeekerPage() {
+function NavbarRecruiterPage() {
   return (
     <>
       <nav>
@@ -14,10 +14,14 @@ function NavbarJobSeekerPage() {
               IronFinder
             </h1>
           </Link>
+          <Link to="/Recruiter/create-new-offer">
+            <p className="create-offer">Create An Offer</p>
+          </Link>
+
           <Link to="/Log-Out">
             <p className="log-out">LOG OUT</p>
           </Link>
-          <Link to="/Job-Seeker/Profile">
+          <Link to="/Recruiter/Profile">
             <p className="my-profile-link">My Profile</p>
           </Link>
         </div>
@@ -26,4 +30,4 @@ function NavbarJobSeekerPage() {
   );
 }
 
-export default NavbarJobSeekerPage;
+export default NavbarRecruiterPage;
