@@ -18,8 +18,8 @@ function NavbarLogOut() {
           <Link to="/Log-In">
             <p className="log-in">LOG IN</p>
           </Link>
-          <Link to="/Sign-Up">
-            <p className="sign-up">SIGN UP</p>
+          <Link to="/sign-up-page">
+            <p className="sign-up">SIGN UP Mutha FUCKA</p>
           </Link>
         </div>
       </nav>
