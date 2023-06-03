@@ -23,7 +23,6 @@ function MainHomepage() {
           <JobCard />
           <JobCard />
         </div>
-
         <Footer />
       </div>
     </>
