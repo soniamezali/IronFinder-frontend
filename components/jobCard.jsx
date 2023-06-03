@@ -4,10 +4,8 @@ import "./JobCard.css";
 
 function JobCard() {
   return (
-    <div id="main-box">
-      <div id="job-container">
-        <h1>hello everyone</h1>
-      </div>
+    <div className="job-container">
+      <h1>hello everyone</h1>
     </div>
   );
 }
