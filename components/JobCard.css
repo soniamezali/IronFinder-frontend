@@ -1,12 +1,4 @@
-/* #main-box {
-  display: flex;
-  flex-direction: row;
-  /* flex-wrap: wrap; */
-/* gap: 3rem; */
-/* justify-content: center;
-  align-items: center; */
-
-#job-container {
+.job-container {
   background-color: aqua;
   border: 5px;
   border-radius: 10px;
