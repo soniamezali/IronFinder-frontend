@@ -12,7 +12,7 @@ function MainHomepage() {
         <div>
           <NavbarLogOut />
         </div>
-        <div className="job-cards">
+        <div id="job-cards">
           <JobCard />
           <JobCard />
           <JobCard />
