@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // This is where we place our URL to our backend.
 import axios from "axios";
-const ironFinderUrl = "https://ironfinder.onrender.com";
+import service from "../service/api";
+// const ironFinderUrl = "https://ironfinder.onrender.com"; // this gives me localhost of 5174
+const ironFinderBeUrl = "http://localhost:5005/auth/signup";
 
 function signUpForm() {
   const navigateTo = useNavigate();
@@ -17,7 +19,7 @@ function signUpForm() {
   const [linkedInProfile, setLinkedInProfile] = useState("");
   const [bio, setBio] = useState("");
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const recruiterObject = {
@@ -40,8 +42,25 @@ function signUpForm() {
     //     bio: bio,
     //   };
 
+    // axios
+    //   .post(ironFinderUrl, recruiterObject)
+    //   .then((response) => {
+    //     navigateTo("/");
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });\
+
+    // try {
+    //   const response = await service.post("/auth/signup", recruiterObject);
+    //   console.log(response);
+    //   if (response.status === 201) {
+    //     navigateTo("/");
+    //   }
+    // } catch (error) {}
+
     axios
-      .post(ironFinderUrl, recruiterObject)
+      .post(ironFinderBeUrl, recruiterObject)
       .then((response) => {
         navigateTo("/");
       })
