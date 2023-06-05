@@ -18,7 +18,7 @@ function RecruiterProfilePage() {
   useEffect(() => {
     // get infos from backend
     axios
-      .get("http://localhost:5005/")
+      .get("http://localhost:5005/recruiter/:id")
       .then((response) => {
         setRecruiterData(response.data);
         setFormData({

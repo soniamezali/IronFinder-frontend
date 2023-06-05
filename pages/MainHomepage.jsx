@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavbarLogOut from "../components/NavbarLogOut";
+import NavBarLogOut from "../components/NavBarLogOut";
 import JobCard from "../components/JobCard";
 import Footer from "../components/footer";
 import "./MainHomePage.css";
@@ -10,7 +10,7 @@ function MainHomepage() {
     <>
       <div>
         <div>
-          <NavbarLogOut />
+          <NavBarLogOut />
         </div>
         <div id="job-cards">
           <JobCard />
