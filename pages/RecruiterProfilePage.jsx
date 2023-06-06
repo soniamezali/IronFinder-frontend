@@ -7,6 +7,7 @@ import axios from "axios";
 function RecruiterProfilePage() {
   const [recruiterData, setRecruiterData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [jobOffers, setJobOffers] = useState([]);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -49,16 +50,28 @@ function RecruiterProfilePage() {
   //give the new infos to the backend and the edit mode is false now
   const handleSaveClick = () => {
     axios
-      .patch("http://localhost:5173/", formData)
+      .patch("http://localhost:5005/recruiter/:id", formData)
       .then((response) => {
         setIsEditing(false);
-        // Mettre à jour les données du recruteur affichées dans le formulaire
+        // upload the recruiter info
         setRecruiterData(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
   };
+
+  // get the job offers created by the recruiter
+  useEffect(() => {
+    axios
+      .get("http://localhost:5005/job-offer/:id")
+      .then((response) => {
+        setJobOffers(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <>
@@ -145,6 +158,21 @@ function RecruiterProfilePage() {
             )}
           </form>
         )}
+      </div>
+      <div>
+        <h2>Job Offers Created</h2>
+        {jobOffers.map((jobOffer) => (
+          <div key={jobOffer._id}>
+            <h3>{jobOffer.companyPhoto}</h3>
+            <p>{jobOffer.companyLogo}</p>
+            <p>{jobOffer.companyName}</p>
+            <p className="job-offer-title">
+              <Link to="/recruiter/detail">{jobOffer.jobTitle}</Link>
+            </p>
+            <p>{jobOffer.jobLocation}</p>
+            <p>{jobOffer.contractType}</p>
+          </div>
+        ))}
       </div>
       <Footer />
     </>
