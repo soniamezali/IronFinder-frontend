@@ -7,6 +7,7 @@ import axios from "axios";
 function JobSeekerProfilePage() {
   const [jobSeekerData, setJobSeekerData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [savedJobOffers, setSavedJobOffers] = useState([]);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -22,7 +23,7 @@ function JobSeekerProfilePage() {
   useEffect(() => {
     // get infos from backend
     axios
-      .get("http://localhost:5173")
+      .get("http://localhost:5173/job-seeker/:id")
       .then((response) => {
         setJobSeekerData(response.data);
         setFormData({
@@ -57,7 +58,7 @@ function JobSeekerProfilePage() {
   //give the new infos to the backend and the edit mode is false now
   const handleSaveClick = () => {
     axios
-      .patch("http://localhost:5173/", formData)
+      .patch("http://localhost:5173/job-seeker/:id", formData)
       .then((response) => {
         setIsEditing(false);
         // Mettre à jour les données du recruteur affichées dans le formulaire
@@ -67,6 +68,18 @@ function JobSeekerProfilePage() {
         console.error(error);
       });
   };
+
+  useEffect(() => {
+    // get the job offers that the jobseeker saved for later from the backend
+    axios
+      .get("http://localhost:5173/jobseeker/:id/saved-joboffers")
+      .then((response) => {
+        setSavedJobOffers(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   return (
     <>
@@ -207,8 +220,21 @@ function JobSeekerProfilePage() {
           </form>
         )}
       </div>
-
-      {/* ajouter historique des offres favorites */}
+      <div>
+        <h2>My Favourites </h2>
+        {savedJobOffers.map((jobOffer) => (
+          <div key={jobOffer._id}>
+            <h3>{jobOffer.companyPhoto}</h3>
+            <p>{jobOffer.companyLogo}</p>
+            <p>{jobOffer.companyName}</p>
+            <p className="job-offer-title">
+              <Link to="/job-seeker/detail">{jobOffer.jobTitle}</Link>
+            </p>
+            <p>{jobOffer.jobLocation}</p>
+            <p>{jobOffer.contractType}</p>
+          </div>
+        ))}
+      </div>
 
       <Footer />
     </>
