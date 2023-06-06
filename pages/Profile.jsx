@@ -1,0 +1,17 @@
+import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../src/context/authContext";
+import JobSeekerHomePage from "./JobSeekerHomepage";
+import RecruiterHomePage from "./RecruiterHomepage";
+
+const Profile = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  if (user.isJobSeeker) {
+    return <JobSeekerHomePage />;
+  } else {
+    return <RecruiterHomePage />;
+  }
+};
+
+export default Profile;

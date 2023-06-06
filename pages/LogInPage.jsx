@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import service from "../service/api";
 import { AuthContext } from "../src/context/authContext";
+import NavbarLogOut from "../components/NavbarLogOut";
 
 function LogIn() {
   const { authenticateUser, user } = useContext(AuthContext);
@@ -19,15 +20,26 @@ function LogIn() {
       localStorage.setItem("token", response.data.authToken);
       console.log("this is the response.data.token", response.data.authToken);
       await authenticateUser();
-      console.log(user);
-      //   navigateTo("/profile");
+      dispatchUser();
+      navigateTo("/profile");
     } catch (error) {
       console.log(error);
+    }
+
+    function dispatchUser() {
+      if (user.__t === "Recruiter") {
+        console.log("Recruiter");
+      } else {
+        console.log("Job Seeker");
+      }
     }
   }
 
   return (
     <div>
+      <div>
+        <NavbarLogOut />
+      </div>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input

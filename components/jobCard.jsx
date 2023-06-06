@@ -4,6 +4,8 @@ import axios from "axios";
 import SearchOffers from "./SearchOffers";
 import SearchByLocation from "./SearchByLocation";
 import SearchByContract from "./SearchByContract";
+import { useContext } from "react";
+import { AuthContext } from "../src/context/authContext";
 
 function JobCard() {
   // State variables
@@ -11,6 +13,7 @@ function JobCard() {
   const [search, setSearch] = useState("");
   const [location, setLocation] = useState("");
   const [contractType, setContractType] = useState("");
+  const { isLoggedIn, isLoading, user } = useContext(AuthContext);
 
   const isJobSeeker = true;
 
@@ -76,9 +79,16 @@ function JobCard() {
             <p>{jobOffer.companyName}</p>
             <p className="job-offer-title">
               {/* Link to the appropriate job detail page */}
-              <Link to={getJobDetailPageLink(jobOffer)}>
-                {jobOffer.jobTitle}
-              </Link>
+              {isLoggedIn && (
+                <Link to={getJobDetailPageLink(jobOffer)}>
+                  {jobOffer.jobTitle}
+                </Link>
+              )}
+              {!isLoggedIn && (
+                <Link to={"/sign-up-page"}>
+                  Please signup/login to see details
+                </Link>
+              )}
             </p>
             <p>{jobOffer.jobLocation}</p>
             <p>{jobOffer.contractType}</p>

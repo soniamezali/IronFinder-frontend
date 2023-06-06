@@ -4,8 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 // This is where we place our URL to our backend.
 import axios from "axios";
 import service from "../service/api";
+import NavbarLogOut from "../components/NavbarLogOut";
 // const ironFinderUrl = "https://ironfinder.onrender.com"; // this gives me localhost of 5174
-const ironFinderBeUrl = "http://localhost:5005/auth/signup";
+let ironFinderBeUrl = "http://localhost:5005/auth/signup";
 
 function signUpForm() {
   const navigateTo = useNavigate();
@@ -23,12 +24,16 @@ function signUpForm() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+    console.log(ironFinderBeUrl);
     const recruiterObject = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       password: password,
+      phone: phone,
+      city: city,
+      linkedInProfile: linkedInProfile,
+      isJobSeeker: jobSeekerBox,
     };
 
     axios
@@ -44,15 +49,20 @@ function signUpForm() {
   const handleRecruit = () => {
     setRecruitBox(true);
     setJobSeekerBox(false);
+    //ironFinderBeUrl += "recruiter";
   };
 
   const handleJobSeeker = () => {
     setRecruitBox(false);
     setJobSeekerBox(true);
+    //ironFinderBeUrl += "auth/signup";
   };
 
   return (
     <div>
+      <div>
+        <NavbarLogOut />
+      </div>
       <div className="recruiter-form"></div>
       <div className="recruiter-body">
         <h2>Are you a recruiter or a Job Seeker?</h2>

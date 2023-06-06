@@ -7,9 +7,10 @@ import JobSeekerHomePage from "../pages/JobSeekerHomepage";
 import JobSeekerProfilePage from "../pages/JobSeekerProfilePage";
 import JobSeekerDetailOffer from "../pages/JobSeekerDetailOffer";
 import RecruiterDetailOffer from "../pages/RecruiterDetailOffer";
-// import LogInPage from "../pages/LogInPage";
+import LogInPage from "../pages/LogInPage";
 import RecruiterHomepage from "../pages/RecruiterHomepage";
 import RecruiterProfilePage from "../pages/RecruiterProfilePage";
+import Profile from "../pages/Profile";
 // import CreateOfferPage from "../pages/CreateOfferPage";
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
 
         <Route path="/sign-up-page" element={<SignUpPage />}></Route>
 
-        {/* <Route path="/log-in" element={<LogInPage />}></Route> */}
+        <Route path="/log-in" element={<LogInPage />}></Route>
 
         <Route
           path="/job-seeker-homepage"
@@ -47,6 +48,7 @@ function App() {
           path="/recruiter/detail-offer"
           element={<RecruiterDetailOffer />}
         ></Route>
+        <Route path="/profile" element={<Profile />}></Route>
         {/* <Route
           path="/recruiter/create-offer"
           element={<CreateOfferPage />}
