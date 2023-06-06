@@ -2,6 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import MainHomepage from "../pages/MainHomepage";
 import SignUpPage from "../pages/SignUpPage";
+
 import JobSeekerHomePage from "../pages/JobSeekerHomepage";
 import JobSeekerProfilePage from "../pages/JobSeekerProfilePage";
 import JobSeekerDetailOffer from "../pages/JobSeekerDetailOffer";
