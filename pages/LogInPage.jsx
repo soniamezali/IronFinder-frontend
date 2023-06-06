@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import service from "../service/api";
 import { AuthContext } from "../src/context/authContext";
-import NavbarLogOut from "../components/NavbarLogOut";
+import NavbarLogOut from "../components/NavBarLogOut";
 
 function LogIn() {
   const { authenticateUser, user } = useContext(AuthContext);
