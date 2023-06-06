@@ -20,18 +20,9 @@ function LogIn() {
       localStorage.setItem("token", response.data.authToken);
       console.log("this is the response.data.token", response.data.authToken);
       await authenticateUser();
-      dispatchUser();
       navigateTo("/profile");
     } catch (error) {
       console.log(error);
-    }
-
-    function dispatchUser() {
-      if (user.__t === "Recruiter") {
-        console.log("Recruiter");
-      } else {
-        console.log("Job Seeker");
-      }
     }
   }
 
@@ -54,7 +45,7 @@ function LogIn() {
         <button>Log in, bitch !</button>
       </form>
       <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <Link to={"/sign-up-page"}> Sign Up</Link>
     </div>
   );
 }

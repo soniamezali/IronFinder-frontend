@@ -33,9 +33,9 @@ function JobCard() {
   const getJobDetailPageLink = (jobOffer) => {
     // Determine the appropriate job detail page link based on user type
     if (isJobSeeker) {
-      return `/jobseeker/detail/${jobOffer._id}`;
+      return `/job-seeker/detail-offer/${jobOffer._id}`;
     } else {
-      return `/recruiter/detail/${jobOffer._id}`;
+      return `/recruiter/detail-offer/${jobOffer._id}`;
     }
   };
 
@@ -84,11 +84,7 @@ function JobCard() {
                   {jobOffer.jobTitle}
                 </Link>
               )}
-              {!isLoggedIn && (
-                <Link to={"/sign-up-page"}>
-                  Please signup/login to see details
-                </Link>
-              )}
+              {!isLoggedIn && <Link to={"/log-in"}>{jobOffer.jobTitle}</Link>}
             </p>
             <p>{jobOffer.jobLocation}</p>
             <p>{jobOffer.contractType}</p>

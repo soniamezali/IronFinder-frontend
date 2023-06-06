@@ -1,10 +1,22 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import NavbarJobSeeker from "../components/NavBarJobSeeker";
 import Footer from "../components/footer";
 import axios from "axios";
 
 function JobSeekerDetailOffer() {
+  const dialog = useRef();
+  const { id } = useParams();
+  const [oneJobOffer, setOneJobOffer] = useState(null);
+
+  useEffect(() => {
+    axios.get().then((response) => {
+      setOneJobOffer(response.data);
+    });
+  }, [id]);
+
+  if (!oneJobOffer) return <div>Loading job offer...</div>;
+
   return (
     <>
       <div>

@@ -4,7 +4,7 @@ import { AuthContext } from "../src/context/authContext";
 import JobSeekerHomePage from "./JobSeekerHomepage";
 import RecruiterHomePage from "./RecruiterHomepage";
 
-const Profile = () => {
+const RedirectionProfile = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
   if (user.isJobSeeker) {
@@ -14,4 +14,4 @@ const Profile = () => {
   }
 };
 
-export default Profile;
+export default RedirectionProfile;

@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import NavBarJobSeeker from "../components/NavBarJobSeeker";
 import Footer from "../components/footer";
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../src/context/authContext";
+import service from "../service/api";
 
 function JobSeekerProfilePage() {
   const [jobSeekerData, setJobSeekerData] = useState(null);
@@ -19,12 +22,15 @@ function JobSeekerProfilePage() {
     linkedInProfile: "",
     bio: "",
   });
+  const { user } = useContext(AuthContext);
+  console.log(user);
 
   useEffect(() => {
     // get infos from backend
-    axios
-      .get("http://localhost:5173/job-seeker/:id")
+    service
+      .get(`/job-seeker/${user._id}`)
       .then((response) => {
+        console.log(response);
         setJobSeekerData(response.data);
         setFormData({
           firstName: response.data.firstName,
@@ -57,8 +63,8 @@ function JobSeekerProfilePage() {
 
   //give the new infos to the backend and the edit mode is false now
   const handleSaveClick = () => {
-    axios
-      .patch("http://localhost:5173/job-seeker/:id", formData)
+    service
+      .patch(`/job-seeker/${user._id}`, formData)
       .then((response) => {
         setIsEditing(false);
         // Mettre à jour les données du recruteur affichées dans le formulaire
@@ -72,7 +78,7 @@ function JobSeekerProfilePage() {
   useEffect(() => {
     // get the job offers that the jobseeker saved for later from the backend
     axios
-      .get("http://localhost:5173/jobseeker/:id/saved-joboffers")
+      .get("http://localhost:5005/jobSeeker/:id/saved-joboffers")
       .then((response) => {
         setSavedJobOffers(response.data);
       })
@@ -88,6 +94,7 @@ function JobSeekerProfilePage() {
       </div>
       <div>
         <h2> Your Profile</h2>
+
         {jobSeekerData && (
           <form>
             <label>
