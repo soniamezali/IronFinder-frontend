@@ -22,7 +22,7 @@ const AuthContextWrapper = ({ children }) => {
             Authorization: `Bearer ${token}`,
           },
         });
-        console.log(response);
+        // console.log("la rep du verify:", response);
         setUser(response.data);
         setIsLoggedIn(true);
         setIsLoading(false);
@@ -38,6 +38,8 @@ const AuthContextWrapper = ({ children }) => {
       setIsLoading(false);
     }
   };
+
+  console.log("le user est:", user);
 
   const values = {
     user,

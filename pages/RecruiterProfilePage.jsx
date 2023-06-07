@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import NavbarRecruiterPage from "../components/NavBarRecruiter";
+import NavBarRecruiter from "../components/NavBarRecruiter";
 import Footer from "../components/footer";
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../src/context/authContext";
+import service from "../service/api";
 
 function RecruiterProfilePage() {
-  const [recruiterData, setRecruiterData] = useState(null);
+  const [recruiterData, setRecuiterData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [jobOffers, setJobOffers] = useState([]);
+  const [savedJobOffers, setSavedJobOffers] = useState([]);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -16,12 +19,21 @@ function RecruiterProfilePage() {
     photoProfile: "",
   });
 
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  console.log("user id is :", user._id);
+
+  // if (!user) {
+  //   return <div>wait...</div>;
+  // }
+
   useEffect(() => {
     // get infos from backend
-    axios
-      .get("http://localhost:5005/recruiter/:id")
+    service
+      .get(`/recruiter/${user._id}`)
       .then((response) => {
-        setRecruiterData(response.data);
+        console.log(response);
+        setRecuiterData(response.data);
         setFormData({
           firstName: response.data.firstName,
           lastName: response.data.lastName,
@@ -49,37 +61,38 @@ function RecruiterProfilePage() {
 
   //give the new infos to the backend and the edit mode is false now
   const handleSaveClick = () => {
-    axios
-      .patch("http://localhost:5005/recruiter/:id", formData)
+    service
+      .patch(`/auth`, formData)
       .then((response) => {
         setIsEditing(false);
-        // upload the recruiter info
-        setRecruiterData(response.data);
+        // Mettre à jour les données du recruteur affichées dans le formulaire
+        setRecuiterData(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
   };
 
-  // get the job offers created by the recruiter
-  useEffect(() => {
-    axios
-      .get("http://localhost:5005/job-offer/:id")
-      .then((response) => {
-        setJobOffers(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   // get the job offers that the jobseeker saved for later from the backend
+  //   axios
+  //     .get("http://localhost:5005/recruiter/:id/saved-joboffers")
+  //     .then((response) => {
+  //       setSavedJobOffers(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }, []);
 
   return (
     <>
       <div>
-        <NavbarRecruiterPage />
+        <NavBarRecruiter />
       </div>
       <div>
         <h2> Your Profile</h2>
+
         {recruiterData && (
           <form>
             <label>
@@ -147,9 +160,10 @@ function RecruiterProfilePage() {
                 <span>{recruiterData.photoProfile}</span>
               )}
             </label>
+
             {isEditing ? (
               <button type="button" onClick={handleSaveClick}>
-                Save
+                Save Changes
               </button>
             ) : (
               <button type="button" onClick={handleEditClick}>
@@ -159,21 +173,22 @@ function RecruiterProfilePage() {
           </form>
         )}
       </div>
-      <div>
-        <h2>Job Offers Created</h2>
-        {jobOffers.map((jobOffer) => (
+      {/* <div>
+        <h2>My Favourites </h2>
+        {savedJobOffers.map((jobOffer) => (
           <div key={jobOffer._id}>
             <h3>{jobOffer.companyPhoto}</h3>
             <p>{jobOffer.companyLogo}</p>
             <p>{jobOffer.companyName}</p>
             <p className="job-offer-title">
-              <Link to="/recruiter/detail">{jobOffer.jobTitle}</Link>
+              <Link to="/job-seeker/detail">{jobOffer.jobTitle}</Link>
             </p>
             <p>{jobOffer.jobLocation}</p>
             <p>{jobOffer.contractType}</p>
           </div>
         ))}
-      </div>
+      </div> */}
+
       <Footer />
     </>
   );
