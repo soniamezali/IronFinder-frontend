@@ -11,6 +11,8 @@ function JobSeekerProfilePage() {
   const [jobSeekerData, setJobSeekerData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [savedJobOffers, setSavedJobOffers] = useState([]);
+  const [showApplyModal, setShowApplyModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -27,6 +29,7 @@ function JobSeekerProfilePage() {
 
   useEffect(() => {
     // get infos from backend
+
     service
       .get(`/job-seeker/${user._id}`)
       .then((response) => {
@@ -77,15 +80,33 @@ function JobSeekerProfilePage() {
 
   useEffect(() => {
     // get the job offers that the jobseeker saved for later from the backend
-    axios
-      .get("http://localhost:5005/jobSeeker/:id/saved-joboffers")
+    service
+      .get(`http://localhost:5005/favorite`)
       .then((response) => {
+        console.log("this is the response", response);
         setSavedJobOffers(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
+
+  const handleDelete = (jobOfferId) => {
+    service
+      .delete(`/favorite/${jobOfferId}`)
+      .then((response) => {
+        console.log(response);
+        setSavedJobOffers(
+          savedJobOffers.filter(
+            (jobOffer) => jobOffer.jobOffer.id !== jobOfferId
+          )
+        );
+        setShowDeleteModal(true);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <>
@@ -146,7 +167,7 @@ function JobSeekerProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>********</span>
+                <span>****</span>
               )}
             </label>
             <label>
@@ -227,21 +248,72 @@ function JobSeekerProfilePage() {
           </form>
         )}
       </div>
-      <div>
+      <div className="favourite-page">
         <h2>My Favourites </h2>
-        {savedJobOffers.map((jobOffer) => (
-          <div key={jobOffer._id}>
-            <h3>{jobOffer.companyPhoto}</h3>
-            <p>{jobOffer.companyLogo}</p>
-            <p>{jobOffer.companyName}</p>
-            <p className="job-offer-title">
-              <Link to="/job-seeker/detail">{jobOffer.jobTitle}</Link>
-            </p>
-            <p>{jobOffer.jobLocation}</p>
-            <p>{jobOffer.contractType}</p>
-          </div>
-        ))}
+        <table className="favourite-table">
+          <thead>
+            <tr>
+              <th> Company </th>
+              <th> Job Title</th>
+              <th> Contract Type</th>
+              <th> Location</th>
+              <th> Apply</th>
+              <th> Delete </th>
+            </tr>
+          </thead>
+          <tbody>
+            {savedJobOffers.map((jobOffer) => (
+              <tr key={jobOffer.id} className="joboffer">
+                <td className="img">
+                  <span>
+                    <img src={jobOffer.jobOffer.companyLogo}></img>
+                  </span>
+                </td>
+                <td className="title">
+                  <span>{jobOffer.jobOffer.jobTitle}</span>
+                </td>
+                <td className="contract-type">
+                  <span>{jobOffer.jobOffer.contractType}</span>
+                </td>
+                <td className="location">
+                  <span>{jobOffer.jobOffer.jobLocation}</span>
+                </td>
+
+                <td className="apply-button">
+                  <img
+                    className="apply-button"
+                    src="/img/apply.jpeg"
+                    onClick={() => setShowApplyModal(true)}
+                  ></img>
+                </td>
+                <td className="delete-button">
+                  <img
+                    className="remove-button"
+                    src="/img/trash.jpeg"
+                    onClick={() => handleDelete(jobOffer.jobOffer._id)}
+                  ></img>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
+      {showApplyModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <p>You applied to this offer.</p>
+            <button onClick={() => setShowApplyModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
+      {showDeleteModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <p>You deleted the offer from favorites.</p>
+            <button onClick={() => setShowDeleteModal(false)}>Close</button>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </>
