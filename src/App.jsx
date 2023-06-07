@@ -39,7 +39,7 @@ function App() {
           element={<JobSeekerProfilePage />}
         ></Route>
         <Route
-          path="/job-seeker/detail-offer"
+          path="/job-seeker/detail-offer/:jobOfferId"
           element={
             <JobSeekerDetailOffer /> //handleAddTofavourite={handleAddTofavourite} />
           }

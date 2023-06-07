@@ -3,22 +3,21 @@ import { useParams, Link } from "react-router-dom";
 import NavbarJobSeeker from "../components/NavBarJobSeeker";
 import Footer from "../components/footer";
 import service from "../service/api";
-
-import { AuthContext } from "../src/context/authContext"; // Importing AuthContext
+import { AuthContext } from "../src/context/authContext";
 
 function JobSeekerDetailOffer() {
   const dialog = useRef();
-  const { id } = useParams();
+  const { jobOfferId } = useParams();
   const [oneJobOffer, setOneJobOffer] = useState(null);
   const [jobOffers, setJobOffers] = useState([]); // State for job offers
   const { jobOffer } = useContext(AuthContext); // Accessing jobOffer value from AuthContext
 
   useEffect(() => {
     // Fetch the job offer details from the API
-    service.get(`/job-offer/${jobOffer._id}`).then((response) => {
+    service.get(`/job-offer/${jobOfferId}`).then((response) => {
       setOneJobOffer(response.data);
     });
-  }, [id]);
+  }, [jobOfferId]);
 
   if (!oneJobOffer) return <div>Loading job offer...</div>;
 
