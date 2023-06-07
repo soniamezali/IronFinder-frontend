@@ -23,11 +23,12 @@ function JobSeekerDetailOffer() {
 
   const handleAddToFavourite = (oneJobOffer) => {
     setJobOffers([...jobOffers, oneJobOffer]); // Add the selected job offer to the jobOffers state
+    service.post(`/favorite/${jobOfferId}`);
   };
 
   const addToFavourite = () => {
-    handleAddToFavourite(oneJobOffer); // Call the handleAddToFavourite function with the selected job offer
-    dialog.current.showModal(); // Show the popup dialog
+    handleAddToFavourite(oneJobOffer);
+    dialog.current.showModal();
   };
 
   return (

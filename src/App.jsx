@@ -1,4 +1,6 @@
 import "./App.css";
+import React, { useState } from "react";
+
 import { Routes, Route } from "react-router-dom";
 import MainHomepage from "../pages/MainHomepage";
 import SignUpPage from "../pages/SignUpPage";
@@ -14,6 +16,7 @@ import Profile from "../pages/Profile";
 import CreateOfferPage from "../pages/CreateOfferPage";
 
 function App() {
+
   return (
     <>
       <Routes>
