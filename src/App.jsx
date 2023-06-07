@@ -11,15 +11,9 @@ import LogInPage from "../pages/LogInPage";
 import RecruiterHomepage from "../pages/RecruiterHomepage";
 import RecruiterProfilePage from "../pages/RecruiterProfilePage";
 import Profile from "../pages/Profile";
-// import CreateOfferPage from "../pages/CreateOfferPage";
+import CreateOfferPage from "../pages/CreateOfferPage";
 
 function App() {
-  // const [jobOffers, setJobOffers] = useState([]);
-
-  // function handleAddTofavourite(oneJobOffer) {
-  //   setJobOffers([...jobOffers, oneJobOffer]);
-  // }
-
   return (
     <>
       <Routes>
@@ -40,9 +34,7 @@ function App() {
         ></Route>
         <Route
           path="/job-seeker/detail-offer/:jobOfferId"
-          element={
-            <JobSeekerDetailOffer /> //handleAddTofavourite={handleAddTofavourite} />
-          }
+          element={<JobSeekerDetailOffer />}
         ></Route>
         <Route
           path="/recruiter-homepage"
@@ -57,10 +49,10 @@ function App() {
           element={<RecruiterDetailOffer />}
         ></Route>
         <Route path="/profile" element={<Profile />}></Route>
-        {/* <Route
-          path="/recruiter/create-offer"
+        <Route
+          path="/recruiter/create-new-offer"
           element={<CreateOfferPage />}
-        ></Route> */}
+        ></Route>
       </Routes>
     </>
   );

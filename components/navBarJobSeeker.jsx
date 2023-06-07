@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LogOutButton from "./LogOutButton";
 
 function NavbarJobSeekerPage() {
   return (
@@ -14,9 +15,10 @@ function NavbarJobSeekerPage() {
               IronFinder
             </h1>
           </Link>
-          <Link to="/Log-Out">
+          {/* <Link to="/Log-Out">
             <p className="log-out">LOG OUT</p>
-          </Link>
+          </Link> */}
+          <LogOutButton />
           <Link to="/job-seeker-profile">
             <p className="my-profile-link">My Profile</p>
           </Link>
