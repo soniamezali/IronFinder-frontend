@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import LogOutButton from "./LogOutButton";
 
 function NavbarRecruiterPage() {
   return (
@@ -18,9 +19,11 @@ function NavbarRecruiterPage() {
             <p className="create-offer">Create An Offer</p>
           </Link>
 
-          <Link to="/Log-Out">
+          {/* <Link to="/Log-Out">
             <p className="log-out">LOG OUT</p>
-          </Link>
+          </Link> */}
+
+          <LogOutButton />
           <Link to="/recruiter/profile">
             <p className="my-profile-link">My Profile</p>
           </Link>
