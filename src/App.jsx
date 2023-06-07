@@ -1,4 +1,6 @@
 import "./App.css";
+import React, { useState } from "react";
+
 import { Routes, Route } from "react-router-dom";
 import MainHomepage from "../pages/MainHomepage";
 import SignUpPage from "../pages/SignUpPage";
@@ -16,7 +18,7 @@ import Profile from "../pages/Profile";
 function App() {
   // const [jobOffers, setJobOffers] = useState([]);
 
-  // function handleAddTofavourite(oneJobOffer) {
+  // function handleAddToFavourite(oneJobOffer) {
   //   setJobOffers([...jobOffers, oneJobOffer]);
   // }
 
