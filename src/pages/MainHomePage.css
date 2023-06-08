@@ -1,9 +1,0 @@
-.job-cards {
-  display: grid;
-  /* display: flex; */
-  /* justify-content: center; */
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  /* margin-left: 9rem; */
-  margin: 0 auto;
-}

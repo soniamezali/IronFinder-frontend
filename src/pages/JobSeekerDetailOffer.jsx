@@ -4,6 +4,8 @@ import NavbarJobSeeker from "./../components/navBarJobSeeker";
 import Footer from "./../components/footer";
 import service from "../service/api";
 import { AuthContext } from "./../context/authContext";
+import "../App.css";
+import "../index.css";
 
 function JobSeekerDetailOffer() {
   const dialog = useRef();

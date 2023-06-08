@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import service from "../service/api";
 import { AuthContext } from "../context/authContext";
 import NavbarLogOut from "../components/NavBarLogOut";
+import "../App.css";
+import "../index.css";
 
 function LogIn() {
   const { authenticateUser, user } = useContext(AuthContext);
@@ -42,7 +44,7 @@ function LogIn() {
           type="password"
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button>Log in, bitch !</button>
+        <button>Log in!</button>
       </form>
       <p>Don't have an account yet?</p>
       <Link to={"/sign-up-page"}> Sign Up</Link>

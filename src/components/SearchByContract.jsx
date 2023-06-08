@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import "../App.css";
+import "../index.css";
 
 function SearchByContract(props) {
   function handleSearch(event) {

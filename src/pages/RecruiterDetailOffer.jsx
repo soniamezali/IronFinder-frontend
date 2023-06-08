@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import NavBarRecruiter from "../components/NavBarRecruiter";
 import Footer from "../components/footer";
-
+import "../App.css";
+import "../index.css";
 import service from "../service/api";
 
 function RecruiterDetailOffer() {

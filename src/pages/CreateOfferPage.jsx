@@ -5,6 +5,8 @@ import Footer from "./../components/footer";
 import { useContext } from "react";
 import { AuthContext } from "./../context/authContext";
 import service from "../service/api";
+import "../App.css";
+import "../index.css";
 
 function CreateOfferPage() {
   const [companyName, setCompanyName] = useState("");

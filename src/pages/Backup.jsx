@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // This is where we place our URL to our backend.
 // import axios from "axios";
+import "../App.css";
+import "../index.css";
 import service from "../service/api";
 import NavbarLogOut from "../components/NavBarLogOut";
 // const ironFinderUrl = "https://ironfinder.onrender.com"; // this gives me localhost of 5174

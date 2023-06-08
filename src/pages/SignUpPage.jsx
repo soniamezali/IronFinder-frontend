@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavbarLogOut from "../components/NavBarLogOut";
 import service from "../service/api";
+import "../App.css";
+import "../index.css";
 
 function SignUpPage() {
   const navigateTo = useNavigate();
