@@ -46,7 +46,7 @@ function App() {
           element={<RecruiterProfilePage />}
         ></Route>
         <Route
-          path="/recruiter/detail-offer"
+          path="/recruiter/detail-offer/:jobOfferId"
           element={<RecruiterDetailOffer />}
         ></Route>
         <Route path="/profile" element={<Profile />}></Route>
