@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import NavBarJobSeeker from "../components/NavBarJobSeeker";
+import NavBarJobSeeker from "../components/navBarJobSeeker";
 import Footer from "../components/footer";
 import axios from "axios";
 import { useContext } from "react";
-import { AuthContext } from "../src/context/authContext";
-import service from "../src/service/api";
+import { AuthContext } from "./../context/authContext";
+import service from "../service/api";
 
 function JobSeekerProfilePage() {
   const [jobSeekerData, setJobSeekerData] = useState(null);

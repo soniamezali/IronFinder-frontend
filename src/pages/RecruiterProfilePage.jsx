@@ -4,8 +4,8 @@ import NavBarRecruiter from "../components/NavBarRecruiter";
 import Footer from "../components/footer";
 import axios from "axios";
 import { useContext } from "react";
-import { AuthContext } from "../src/context/authContext";
-import service from "../src/service/api";
+import { AuthContext } from "../context/authContext";
+import service from "../service/api";
 
 function RecruiterProfilePage() {
   const [recruiterData, setRecuiterData] = useState(null);

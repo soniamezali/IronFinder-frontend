@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NavbarJobSeeker from "../components/NavBarJobSeeker";
+import NavbarJobSeeker from "../components/navBarJobSeeker";
 import JobCard from "../components/JobCard";
 import Footer from "../components/footer";
 import "./MainHomePage.css";

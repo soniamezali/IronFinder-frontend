@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import NavBarRecruiter from "../components/NavBarRecruiter";
 import Footer from "../components/footer";
 
-import service from "../src/service/api";
+import service from "../service/api";
 
 function RecruiterDetailOffer() {
   const dialog = useRef();

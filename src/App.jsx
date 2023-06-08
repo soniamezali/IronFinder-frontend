@@ -2,21 +2,20 @@ import "./App.css";
 import React, { useState } from "react";
 
 import { Routes, Route } from "react-router-dom";
-import MainHomepage from "../pages/MainHomepage";
-import SignUpPage from "../pages/SignUpPage";
+import MainHomepage from "./pages/MainHomepage";
+import SignUpPage from "./pages/SignUpPage";
 
-import JobSeekerHomePage from "../pages/JobSeekerHomepage";
-import JobSeekerProfilePage from "../pages/JobSeekerProfilePage";
-import JobSeekerDetailOffer from "../pages/JobSeekerDetailOffer";
-import RecruiterDetailOffer from "../pages/RecruiterDetailOffer";
-import LogInPage from "../pages/LogInPage";
-import RecruiterHomepage from "../pages/RecruiterHomepage";
-import RecruiterProfilePage from "../pages/RecruiterProfilePage";
-import Profile from "../pages/Profile";
-import CreateOfferPage from "../pages/CreateOfferPage";
+import JobSeekerHomePage from "./pages/JobSeekerHomepage";
+import JobSeekerProfilePage from "./pages/JobSeekerProfilePage";
+import JobSeekerDetailOffer from "./pages/JobSeekerDetailOffer";
+import RecruiterDetailOffer from "./pages/RecruiterDetailOffer";
+import LogInPage from "./pages/LogInPage";
+import RecruiterHomepage from "./pages/RecruiterHomepage";
+import RecruiterProfilePage from "./pages/RecruiterProfilePage";
+import Profile from "./pages/Profile";
+import CreateOfferPage from "./pages/CreateOfferPage";
 
 function App() {
-
   return (
     <>
       <Routes>
@@ -25,7 +24,6 @@ function App() {
         <Route path="/sign-up-page" element={<SignUpPage />}></Route>
 
         <Route path="/log-in" element={<LogInPage />}></Route>
-
         <Route
           path="/job-seeker-homepage"
           element={<JobSeekerHomePage />}
