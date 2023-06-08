@@ -2,11 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // This is where we place our URL to our backend.
-import axios from "axios";
+// import axios from "axios";
 import service from "../service/api";
 import NavbarLogOut from "../components/NavBarLogOut";
 // const ironFinderUrl = "https://ironfinder.onrender.com"; // this gives me localhost of 5174
-let ironFinderBeUrl = "https://ironfinder.onrender.com/auth/signup";
 
 function SignUpForm() {
   const navigateTo = useNavigate();
@@ -24,7 +23,6 @@ function SignUpForm() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(ironFinderBeUrl);
     const recruiterObject = {
       firstName: firstName,
       lastName: lastName,
@@ -36,9 +34,9 @@ function SignUpForm() {
       isJobSeeker: jobSeekerBox,
     };
 
-    axios
-      .post(ironFinderBeUrl, recruiterObject)
-      .then((response) => {
+    service
+      .post("/auth/signup", recruiterObject)
+      .then((response)) => {
         navigateTo("/");
       })
       .catch((error) => {
