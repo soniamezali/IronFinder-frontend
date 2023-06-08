@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "./../components/footer";
-import axios from "axios";
+// import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "./../context/authContext";
 import service from "../service/api";
@@ -12,6 +12,7 @@ function CreateOfferPage() {
   const [jobLocation, setJobLocation] = useState("");
   const [contractType, setContractType] = useState("");
   const [jobDescription, setJobDescription] = useState("");
+  const navigateTo = useNavigate();
 
   async function handleSubmit(event) {
     event.preventDefault();

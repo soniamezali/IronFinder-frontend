@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import SearchOffers from "./SearchOffers";
 import SearchByLocation from "./SearchByLocation";
 import SearchByContract from "./SearchByContract";
 import { useContext } from "react";
 import { AuthContext } from "./../context/authContext";
-import 
+import service from "../service/api";
 
 function JobCard() {
   // State variables
@@ -17,27 +17,38 @@ function JobCard() {
   const { isLoggedIn, isLoading, user } = useContext(AuthContext);
   const navigateTo = useNavigate();
 
-  const isJobSeeker = true;
-
   useEffect(() => {
     // Fetch job offers from the API
-    axios
-      .get("https://ironfinder.onrender.com/job-offer/")
-      .then((response) => {
-        setJobOffers(response.data);
-        console.log(response);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    if (user) {
+      service
+        .get("/job-offer/")
+        .then((response) => {
+          setJobOffers(response.data);
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      service
+        .get("/job-offer/homepage")
+        .then((response) => {
+          setJobOffers(response.data);
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
   }, []);
 
-  const getJobDetailPageLink = (jobOffer) => {
+  const getJobDetailPageLink = (jo) => {
     // Determine the appropriate job detail page link based on user type
-    if (isJobSeeker) {
-      navigateTo(`/job-seeker/detail-offer/${jobOffer._id}`);
+    if (user.isJobSeeker) {
+      navigateTo(`/job-seeker/detail-offer/${jo._id}`);
     } else {
-      navigateTo(`/recruiter/detail-offer/${jobOffer._id}`) ;
+      console.log(jo);
+      navigateTo(`/recruiter/detail-offer/${jo._id}`);
     }
   };
 
@@ -82,9 +93,9 @@ function JobCard() {
             <p className="job-offer-title">
               {/* Link to the appropriate job detail page */}
               {isLoggedIn && (
-                <Link to={getJobDetailPageLink(jobOffer)}>
+                <button onClick={() => getJobDetailPageLink(jobOffer)}>
                   {jobOffer.jobTitle}
-                </Link>
+                </button>
               )}
               {!isLoggedIn && <Link to={"/log-in"}>{jobOffer.jobTitle}</Link>}
             </p>

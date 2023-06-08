@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NavBarJobSeeker from "../components/navBarJobSeeker";
 import Footer from "../components/footer";
-import axios from "axios";
+// import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "./../context/authContext";
 import service from "../service/api";

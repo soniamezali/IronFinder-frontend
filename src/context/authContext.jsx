@@ -1,7 +1,8 @@
 import React, { createContext, useState, useEffect } from "react";
 // import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import service from "../service/api";
 
 export const AuthContext = createContext();
 const AuthContextWrapper = ({ children }) => {
@@ -17,14 +18,11 @@ const AuthContextWrapper = ({ children }) => {
     try {
       const token = localStorage.getItem("token");
       if (token) {
-        const response = await axios.get(
-          "https://ironfinder.onrender.com/auth/verify",
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const response = await service.get("/auth/verify", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         // console.log("la rep du verify:", response);
         setUser(response.data);
         setIsLoggedIn(true);

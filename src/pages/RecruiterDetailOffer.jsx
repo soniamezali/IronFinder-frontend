@@ -7,7 +7,7 @@ import service from "../service/api";
 
 function RecruiterDetailOffer() {
   const dialog = useRef();
-  const { id } = useParams();
+  const { jobOfferId } = useParams();
   const [oneJobOffer, setOneJobOffer] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
@@ -21,7 +21,7 @@ function RecruiterDetailOffer() {
 
   useEffect(() => {
     // Fetch the job offer details from the API using the job offer ID
-    service.get(`/job-offer/${id}`).then((response) => {
+    service.get(`/job-offer/${jobOfferId}`).then((response) => {
       setOneJobOffer(response.data);
       setFormData({
         jobTitle: response.data.jobTitle,
@@ -32,21 +32,23 @@ function RecruiterDetailOffer() {
         companyName: response.data.companyName,
       });
     });
-  }, [id]);
+  }, [jobOfferId]);
 
   const handleEdit = () => {
     //  editing mode
     setIsEditing(true);
   };
 
-  const handleSave = () => {
+  const handleSave = (event) => {
     // Send a patch request to the API to update the job offer
+    event.preventDefault();
+    console.log(oneJobOffer);
     service
       .patch(`/job-offer/${oneJobOffer._id}`, formData)
       .then((response) => {
         setOneJobOffer(response.data);
         setIsEditing(false); // Disable the editing mode
-        dialog.current.open(); // Open the success dialog
+        //dialog.current.open(); // Open the success dialog
       })
       .catch((error) => {
         console.error(error);
@@ -109,9 +111,71 @@ function RecruiterDetailOffer() {
 
         <div>
           {isEditing ? (
-            <button className="edit-button" onClick={handleSave}>
-              Save
-            </button>
+            <>
+              <h2>Please fill out form below</h2>
+              <form onSubmit={handleSave}>
+                <div>
+                  <input
+                    placeholder="Name of your company"
+                    type="text"
+                    value={formData.companyName}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        companyName: event.target.value,
+                      })
+                    }
+                  />
+                  <input
+                    placeholder="Job Title"
+                    type="text"
+                    value={formData.jobTitle}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        jobTitle: event.target.value,
+                      })
+                    }
+                  />
+                  <input
+                    placeholder="City"
+                    type="text"
+                    value={formData.jobLocation}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        jobLocation: event.target.value,
+                      })
+                    }
+                  />
+                  <input
+                    placeholder="Contract Type"
+                    type="text"
+                    value={formData.contractType}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        contractType: event.target.value,
+                      })
+                    }
+                  />
+                  <input
+                    placeholder="Brief description of Job"
+                    type="text"
+                    value={formData.jobDescription}
+                    onChange={(event) =>
+                      setFormData({
+                        ...formData,
+                        jobDescription: event.target.value,
+                      })
+                    }
+                  />
+                  <button className="edit-button" onClick={handleSave}>
+                    Save
+                  </button>{" "}
+                </div>
+              </form>
+            </>
           ) : (
             <button className="edit-button" onClick={handleEdit}>
               Edit

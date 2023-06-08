@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavbarLogOut from "../components/NavBarLogOut";
-let ironFinderBeUrl = "https://ironfinder.onrender.com/auth/signup";
+import service from "../service/api";
 
 function SignUpPage() {
   const navigateTo = useNavigate();
@@ -21,7 +21,6 @@ function SignUpPage() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(ironFinderBeUrl);
 
     const recruiterObject = {
       firstName: firstName,
@@ -34,8 +33,8 @@ function SignUpPage() {
       isJobSeeker: jobSeekerBox,
     };
 
-    axios
-      .post(ironFinderBeUrl, recruiterObject)
+    service
+      .post("/auth/signup", recruiterObject)
       .then(() => {
         navigateTo("/");
       })
