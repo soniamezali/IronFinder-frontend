@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import SearchOffers from "./SearchOffers";
 import SearchByLocation from "./SearchByLocation";
 import SearchByContract from "./SearchByContract";
 import { useContext } from "react";
 import { AuthContext } from "./../context/authContext";
+import 
 
 function JobCard() {
   // State variables
@@ -14,6 +15,7 @@ function JobCard() {
   const [location, setLocation] = useState("");
   const [contractType, setContractType] = useState("");
   const { isLoggedIn, isLoading, user } = useContext(AuthContext);
+  const navigateTo = useNavigate();
 
   const isJobSeeker = true;
 
@@ -33,9 +35,9 @@ function JobCard() {
   const getJobDetailPageLink = (jobOffer) => {
     // Determine the appropriate job detail page link based on user type
     if (isJobSeeker) {
-      return `/job-seeker/detail-offer/${jobOffer._id}`;
+      navigateTo(`/job-seeker/detail-offer/${jobOffer._id}`);
     } else {
-      return `/recruiter/detail-offer/${jobOffer._id}`;
+      navigateTo(`/recruiter/detail-offer/${jobOffer._id}`) ;
     }
   };
 

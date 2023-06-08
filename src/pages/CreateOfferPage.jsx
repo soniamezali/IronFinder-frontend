@@ -38,7 +38,7 @@ function CreateOfferPage() {
       .post("/job-offer", createOffer)
       .then((response) => {
         console.log(response);
-        navigateTo("/");
+        navigateTo("/recruiter-homepage");
       })
       .catch((error) => {
         console.log(error);

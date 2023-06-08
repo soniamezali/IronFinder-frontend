@@ -284,7 +284,7 @@ function JobSeekerProfilePage() {
                     className="apply-button"
                     src="/img/apply.jpeg"
                     onClick={() => setShowApplyModal(true)}
-                  ></img>
+                  />
                 </td>
                 <td className="delete-button">
                   <img
