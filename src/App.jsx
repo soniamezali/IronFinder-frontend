@@ -14,6 +14,7 @@ import RecruiterHomepage from "./pages/RecruiterHomepage";
 import RecruiterProfilePage from "./pages/RecruiterProfilePage";
 import Profile from "./pages/Profile";
 import CreateOfferPage from "./pages/CreateOfferPage";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   return (
@@ -24,36 +25,38 @@ function App() {
         <Route path="/sign-up-page" element={<SignUpPage />}></Route>
 
         <Route path="/log-in" element={<LogInPage />}></Route>
-        <Route
-          path="/job-seeker-homepage"
-          element={<JobSeekerHomePage />}
-        ></Route>
+        <Route element={<ProtectedRoute />}>
+          <Route
+            path="/job-seeker-homepage"
+            element={<JobSeekerHomePage />}
+          ></Route>
 
-        <Route
-          path="/job-seeker-profile"
-          element={<JobSeekerProfilePage />}
-        ></Route>
-        <Route
-          path="/job-seeker/detail-offer/:jobOfferId"
-          element={<JobSeekerDetailOffer />}
-        ></Route>
-        <Route
-          path="/recruiter-homepage"
-          element={<RecruiterHomepage />}
-        ></Route>
-        <Route
-          path="/recruiter/profile"
-          element={<RecruiterProfilePage />}
-        ></Route>
-        <Route
-          path="/recruiter/detail-offer/:jobOfferId"
-          element={<RecruiterDetailOffer />}
-        ></Route>
-        <Route path="/profile" element={<Profile />}></Route>
-        <Route
-          path="/recruiter/create-new-offer"
-          element={<CreateOfferPage />}
-        ></Route>
+          <Route
+            path="/job-seeker-profile"
+            element={<JobSeekerProfilePage />}
+          ></Route>
+          <Route
+            path="/job-seeker/detail-offer/:jobOfferId"
+            element={<JobSeekerDetailOffer />}
+          ></Route>
+          <Route
+            path="/recruiter-homepage"
+            element={<RecruiterHomepage />}
+          ></Route>
+          <Route
+            path="/recruiter/profile"
+            element={<RecruiterProfilePage />}
+          ></Route>
+          <Route
+            path="/recruiter/detail-offer/:jobOfferId"
+            element={<RecruiterDetailOffer />}
+          ></Route>
+          <Route path="/profile" element={<Profile />}></Route>
+          <Route
+            path="/recruiter/create-new-offer"
+            element={<CreateOfferPage />}
+          ></Route>
+        </Route>
       </Routes>
     </>
   );
