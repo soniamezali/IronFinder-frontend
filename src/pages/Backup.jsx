@@ -6,7 +6,7 @@ import axios from "axios";
 import service from "../service/api";
 import NavbarLogOut from "../components/NavBarLogOut";
 // const ironFinderUrl = "https://ironfinder.onrender.com"; // this gives me localhost of 5174
-let ironFinderBeUrl = "http://localhost:5005/auth/signup";
+let ironFinderBeUrl = "https://ironfinder.onrender.com/auth/signup";
 
 function SignUpForm() {
   const navigateTo = useNavigate();

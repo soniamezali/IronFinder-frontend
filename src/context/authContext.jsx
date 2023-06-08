@@ -17,11 +17,14 @@ const AuthContextWrapper = ({ children }) => {
     try {
       const token = localStorage.getItem("token");
       if (token) {
-        const response = await axios.get("http://localhost:5005/auth/verify", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "https://ironfinder.onrender.com/auth/verify",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         // console.log("la rep du verify:", response);
         setUser(response.data);
         setIsLoggedIn(true);

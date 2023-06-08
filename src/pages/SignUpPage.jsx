@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavbarLogOut from "../components/NavBarLogOut";
-let ironFinderBeUrl = "http://localhost:5005/auth/signup";
+let ironFinderBeUrl = "https://ironfinder.onrender.com/auth/signup";
 
 function SignUpPage() {
   const navigateTo = useNavigate();
