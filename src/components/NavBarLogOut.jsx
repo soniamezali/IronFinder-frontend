@@ -8,7 +8,7 @@ function NavbarLogOut() {
       <nav>
         <div className="layout-banner">
           <Link to="/">
-            <img className="home-logo" src="./../img/accueil.png"></img>
+            <img className="home-logo" src="/img/accueil.png"></img>
           </Link>
           <Link to="/">
             <h1 className="title-banner" href="/">

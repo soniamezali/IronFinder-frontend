@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
-import NavbarJobSeeker from "../components/NavBarJobSeeker";
-import Footer from "../components/footer";
-import service from "../src/service/api";
-import { AuthContext } from "../src/context/authContext";
+import NavbarJobSeeker from "./../components/navBarJobSeeker";
+import Footer from "./../components/footer";
+import service from "../service/api";
+import { AuthContext } from "./../context/authContext";
 
 function JobSeekerDetailOffer() {
   const dialog = useRef();

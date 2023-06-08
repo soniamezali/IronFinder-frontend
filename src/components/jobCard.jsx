@@ -5,7 +5,7 @@ import SearchOffers from "./SearchOffers";
 import SearchByLocation from "./SearchByLocation";
 import SearchByContract from "./SearchByContract";
 import { useContext } from "react";
-import { AuthContext } from "../src/context/authContext";
+import { AuthContext } from "./../context/authContext";
 
 function JobCard() {
   // State variables

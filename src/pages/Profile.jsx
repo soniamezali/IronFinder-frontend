@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { AuthContext } from "../src/context/authContext";
+import { AuthContext } from "./../context/authContext";
 import JobSeekerHomePage from "./JobSeekerHomepage";
 import RecruiterHomePage from "./RecruiterHomepage";
 

@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 // import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import service from "../src/service/api";
-import { AuthContext } from "../src/context/authContext";
+import service from "../service/api";
+import { AuthContext } from "../context/authContext";
 import NavbarLogOut from "../components/NavBarLogOut";
 
 function LogIn() {
