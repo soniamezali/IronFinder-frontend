@@ -180,7 +180,7 @@ function JobSeekerProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>{jobSeekerData.photoProfile}</span>
+                <img src={jobSeekerData.photoProfile}></img>
               )}
             </label>
             <label>
