@@ -289,7 +289,7 @@ function JobSeekerProfilePage() {
                 <td className="delete-button">
                   <img
                     className="remove-button"
-                    src="/img/trash.jpeg"
+                    src="/img/trash1.jpeg"
                     onClick={() => handleDelete(jobOffer.jobOffer._id)}
                   ></img>
                 </td>
