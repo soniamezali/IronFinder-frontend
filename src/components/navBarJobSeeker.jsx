@@ -8,7 +8,7 @@ function NavbarJobSeekerPage() {
       <nav>
         <div className="layout-banner">
           <Link to="/job-seeker-homepage">
-            <img className="home-logo" src="./../public/img/accueil.png"></img>
+            <img className="home-logo" src="/img/accueil.png"></img>
           </Link>
           <Link to="/">
             <h1 className="title-banner" href="/">

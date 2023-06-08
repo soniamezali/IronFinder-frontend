@@ -47,7 +47,7 @@ function JobSeekerDetailOffer() {
           </button>
           <h3 style={{ fontSize: "2.5rem" }}>Added to favourite!</h3>
           <button className="go-to-profile-button">
-            <Link to="/job-seeker/profile">Go to profile page!</Link>
+            <Link to="/job-seeker/profile"></Link>
           </button>
         </dialog>
       </div>
