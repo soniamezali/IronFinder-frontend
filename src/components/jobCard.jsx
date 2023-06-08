@@ -19,7 +19,7 @@ function JobCard() {
 
   useEffect(() => {
     // Fetch job offers from the API
-    if (user) {
+    if (user && !user.isJobSeeker) {
       service
         .get("/job-offer/")
         .then((response) => {
@@ -30,6 +30,7 @@ function JobCard() {
           console.error(error);
         });
     } else {
+      console.log("=======");
       service
         .get("/job-offer/homepage")
         .then((response) => {
