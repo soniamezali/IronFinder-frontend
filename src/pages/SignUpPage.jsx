@@ -22,6 +22,7 @@ function SignUpPage() {
   async function handleSubmit(event) {
     event.preventDefault();
     console.log(ironFinderBeUrl);
+
     const recruiterObject = {
       firstName: firstName,
       lastName: lastName,
