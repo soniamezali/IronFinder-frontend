@@ -20,7 +20,7 @@ function JobCard() {
   useEffect(() => {
     // Fetch job offers from the API
     axios
-      .get("http://localhost:5005/job-offer/")
+      .get("https://ironfinder.onrender.com/job-offer/")
       .then((response) => {
         setJobOffers(response.data);
         console.log(response);
