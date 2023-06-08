@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const service = axios.create({
-  baseURL: "http://localhost:5005",
+  baseURL: BACKEND_URL,
 });
 
 service.interceptors.request.use((interceptedRequest) => {
