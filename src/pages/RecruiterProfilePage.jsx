@@ -157,7 +157,7 @@ function RecruiterProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>{recruiterData.photoProfile}</span>
+                <img src={recruiterData.photoProfile}></img>
               )}
             </label>
 

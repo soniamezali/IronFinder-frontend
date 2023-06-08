@@ -74,8 +74,8 @@ function JobCard() {
         {/* Display the filtered job offers */}
         {filteredJobOffers.map((jobOffer) => (
           <div key={jobOffer._id}>
-            <h3>{jobOffer.companyPhoto}</h3>
-            <p>{jobOffer.companyLogo}</p>
+            <img src={jobOffer.companyPhoto}></img>
+            <img src={jobOffer.companyLogo}></img>
             <p>{jobOffer.companyName}</p>
             <p className="job-offer-title">
               {/* Link to the appropriate job detail page */}
