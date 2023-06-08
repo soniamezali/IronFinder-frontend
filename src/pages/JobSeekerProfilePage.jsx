@@ -81,7 +81,7 @@ function JobSeekerProfilePage() {
   useEffect(() => {
     // get the job offers that the jobseeker saved for later from the backend
     service
-      .get(`http://localhost:5005/favorite`)
+      .get(`/favorite`)
       .then((response) => {
         console.log("this is the response", response);
         setSavedJobOffers(response.data);
