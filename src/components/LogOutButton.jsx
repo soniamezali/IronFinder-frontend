@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/authContext";
+import "../App.css";
+import "../index.css";
 
 function LogOutButton() {
   const navigateTo = useNavigate();
@@ -15,7 +17,10 @@ function LogOutButton() {
 
   return (
     <span>
-      <button onClick={handleLogOut}> Log Out </button>
+      <button className="log-out" onClick={handleLogOut}>
+        {" "}
+        Log Out{" "}
+      </button>
     </span>
   );
 }

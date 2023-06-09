@@ -6,6 +6,8 @@ import Footer from "../components/footer";
 import { useContext } from "react";
 import { AuthContext } from "./../context/authContext";
 import service from "../service/api";
+import "../App.css";
+import "../index.css";
 
 function JobSeekerProfilePage() {
   const [jobSeekerData, setJobSeekerData] = useState(null);
@@ -113,11 +115,11 @@ function JobSeekerProfilePage() {
       <div>
         <NavBarJobSeeker />
       </div>
-      <div>
-        <h2> Your Profile</h2>
+      <div className="my-profile-page">
+        <h2> My Profile</h2>
 
         {jobSeekerData && (
-          <form>
+          <form className="jobseeker-editing-form">
             <label>
               firstName:
               {isEditing ? (
@@ -128,7 +130,7 @@ function JobSeekerProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>{jobSeekerData.firstName}</span>
+                <span className="details">{jobSeekerData.firstName}</span>
               )}
             </label>
             <label>
@@ -141,7 +143,7 @@ function JobSeekerProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>{jobSeekerData.lastName}</span>
+                <span className="details">{jobSeekerData.lastName}</span>
               )}
             </label>
             <label>
@@ -154,7 +156,7 @@ function JobSeekerProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>{jobSeekerData.email}</span>
+                <span className="details">{jobSeekerData.email}</span>
               )}
             </label>
             <label>
@@ -167,10 +169,10 @@ function JobSeekerProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>****</span>
+                <span className="details">****</span>
               )}
             </label>
-            <label>
+            <label style={{ width: "80px", marginLeft: "660px" }}>
               photoProfile:
               {isEditing ? (
                 <input
@@ -193,7 +195,7 @@ function JobSeekerProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>{jobSeekerData.phone}</span>
+                <span className="details">{jobSeekerData.phone}</span>
               )}
             </label>
             <label>
@@ -206,7 +208,7 @@ function JobSeekerProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>{jobSeekerData.city}</span>
+                <span className="details">{jobSeekerData.city}</span>
               )}
             </label>
             <label>
@@ -219,7 +221,7 @@ function JobSeekerProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>{jobSeekerData.linkedInProfile}</span>
+                <span className="details">{jobSeekerData.linkedInProfile}</span>
               )}
             </label>
             <label>
@@ -232,12 +234,16 @@ function JobSeekerProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>{jobSeekerData.bio}</span>
+                <span className="details">{jobSeekerData.bio}</span>
               )}
             </label>
 
             {isEditing ? (
-              <button type="button" onClick={handleSaveClick}>
+              <button
+                type="button"
+                onClick={handleSaveClick}
+                style={{ marginLeft: "150px", width: "150px" }}
+              >
                 Save Changes
               </button>
             ) : (
@@ -249,7 +255,11 @@ function JobSeekerProfilePage() {
         )}
       </div>
       <div className="favourite-page">
-        <h2>My Favourites </h2>
+        <h2
+          style={{ marginBottom: "50px", marginLeft: "140px", color: "black" }}
+        >
+          My Favourites{" "}
+        </h2>
         <table className="favourite-table">
           <thead>
             <tr>
@@ -258,7 +268,7 @@ function JobSeekerProfilePage() {
               <th> Contract Type</th>
               <th> Location</th>
               <th> Apply</th>
-              <th> Delete </th>
+              <th> Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -266,7 +276,10 @@ function JobSeekerProfilePage() {
               <tr key={jobOffer.id} className="joboffer">
                 <td className="img">
                   <span>
-                    <img src={jobOffer.jobOffer.companyLogo}></img>
+                    <img
+                      src={jobOffer.jobOffer.companyLogo}
+                      style={{ width: "200px" }}
+                    ></img>
                   </span>
                 </td>
                 <td className="title">
@@ -284,6 +297,7 @@ function JobSeekerProfilePage() {
                     className="apply-button"
                     src="/img/apply.jpeg"
                     onClick={() => setShowApplyModal(true)}
+                    style={{ width: "40px" }}
                   />
                 </td>
                 <td className="delete-button">
@@ -291,6 +305,7 @@ function JobSeekerProfilePage() {
                     className="remove-button"
                     src="/img/trash1.jpeg"
                     onClick={() => handleDelete(jobOffer.jobOffer._id)}
+                    style={{ width: "50px" }}
                   ></img>
                 </td>
               </tr>

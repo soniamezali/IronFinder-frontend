@@ -2,7 +2,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams, Link } from "react-router-dom";
 import NavBarRecruiter from "../components/NavBarRecruiter";
 import Footer from "../components/footer";
-
+import "../App.css";
+import "../index.css";
 import service from "../service/api";
 
 function RecruiterDetailOffer() {
@@ -77,9 +78,13 @@ function RecruiterDetailOffer() {
       <div>
         <h2>Job Offer Details</h2>
         <div className="job-offer-details">
-          <img src={oneJobOffer.companyLogo} alt={oneJobOffer.jobTitle} />
+          <img
+            src={oneJobOffer.companyLogo}
+            alt={oneJobOffer.jobTitle}
+            style={{ width: "80px" }}
+          />
           <h3>{oneJobOffer.companyName}</h3>
-          <h2>{oneJobOffer.jobTitle}</h2>
+          <h3>{oneJobOffer.jobTitle}</h3>
           <p>
             <span>Contract Type : </span>
             <span className="details">{oneJobOffer.contractType}</span>
@@ -112,9 +117,11 @@ function RecruiterDetailOffer() {
         <div>
           {isEditing ? (
             <>
-              <h2>Please fill out form below</h2>
+              <h2 style={{ color: "rgb(0, 217, 255)" }}>
+                Please fill out form below
+              </h2>
               <form onSubmit={handleSave}>
-                <div>
+                <div className="is-editing-form">
                   <input
                     placeholder="Name of your company"
                     type="text"

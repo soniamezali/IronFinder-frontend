@@ -5,6 +5,8 @@ import Footer from "./../components/footer";
 import { useContext } from "react";
 import { AuthContext } from "./../context/authContext";
 import service from "../service/api";
+import "../App.css";
+import "../index.css";
 
 function CreateOfferPage() {
   const [companyName, setCompanyName] = useState("");
@@ -48,43 +50,45 @@ function CreateOfferPage() {
 
   return (
     <>
-      <h2>Please fill out form below</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            placeholder="Name of your company"
-            type="text"
-            value={companyName}
-            onChange={(event) => setCompanyName(event.target.value)}
-          />
-          <input
-            placeholder="Job Title"
-            type="text"
-            value={jobTitle}
-            onChange={(event) => setJobTitle(event.target.value)}
-          />
-          <input
-            placeholder="City"
-            type="text"
-            value={jobLocation}
-            onChange={(event) => setJobLocation(event.target.value)}
-          />
-          <input
-            placeholder="Contract Type"
-            type="text"
-            value={contractType}
-            onChange={(event) => setContractType(event.target.value)}
-          />
-          <input
-            placeholder="Brief description of Job"
-            type="text"
-            value={jobDescription}
-            onChange={(event) => setJobDescription(event.target.value)}
-          />
-          <button type="submit">Send</button>
-        </div>
-      </form>
-      <Link to={"/recruiter-homepage"}>Back</Link>
+      <div className="Create-offer-page">
+        <h1>Please fill out form below</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <input
+              placeholder="Name of your company"
+              type="text"
+              value={companyName}
+              onChange={(event) => setCompanyName(event.target.value)}
+            />
+            <input
+              placeholder="Job Title"
+              type="text"
+              value={jobTitle}
+              onChange={(event) => setJobTitle(event.target.value)}
+            />
+            <input
+              placeholder="City"
+              type="text"
+              value={jobLocation}
+              onChange={(event) => setJobLocation(event.target.value)}
+            />
+            <input
+              placeholder="Contract Type"
+              type="text"
+              value={contractType}
+              onChange={(event) => setContractType(event.target.value)}
+            />
+            <input
+              placeholder="Brief description of Job"
+              type="text"
+              value={jobDescription}
+              onChange={(event) => setJobDescription(event.target.value)}
+            />
+            <button type="submit">Send</button>
+          </div>
+        </form>
+        <Link to={"/recruiter-homepage"}>Back</Link>
+      </div>
     </>
   );
 }

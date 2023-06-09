@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import LogOutButton from "./LogOutButton";
+import "../App.css";
+import "../index.css";
 
 function NavbarRecruiterPage() {
   return (
@@ -10,10 +12,8 @@ function NavbarRecruiterPage() {
           <Link to="/recruiter-homepage">
             <img className="home-logo" src="/img/accueil.png"></img>
           </Link>
-          <Link to="/">
-            <h1 className="title-banner" href="/">
-              IronFinder
-            </h1>
+          <Link to="/" className="title-banner">
+            <h1 href="/">IronFinder</h1>
           </Link>
           <Link to="/recruiter/create-new-offer">
             <p className="create-offer">Create An Offer</p>

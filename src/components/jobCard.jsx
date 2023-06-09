@@ -7,6 +7,7 @@ import SearchByContract from "./SearchByContract";
 import { useContext } from "react";
 import { AuthContext } from "./../context/authContext";
 import service from "../service/api";
+import "../App.css";
 
 function JobCard() {
   // State variables
@@ -83,28 +84,33 @@ function JobCard() {
           setContractType={setContractType}
         />
       </div>
-
-      <div className="job-container">
-        {/* Display the filtered job offers */}
-        {filteredJobOffers.map((jobOffer) => (
-          <div key={jobOffer._id}>
-            <img src={jobOffer.companyPhoto}></img>
-            <img src={jobOffer.companyLogo}></img>
-            <p>{jobOffer.companyName}</p>
-            <p className="job-offer-title">
-              {/* Link to the appropriate job detail page */}
-              {isLoggedIn && (
-                <button onClick={() => getJobDetailPageLink(jobOffer)}>
-                  {jobOffer.jobTitle}
-                </button>
-              )}
-              {!isLoggedIn && <Link to={"/log-in"}>{jobOffer.jobTitle}</Link>}
-            </p>
-            <p>{jobOffer.jobLocation}</p>
-            <p>{jobOffer.contractType}</p>
-          </div>
-        ))}
-      </div>
+      <section id="job-list">
+        <div>
+          {/* Display the filtered job offers */}
+          {filteredJobOffers.map((jobOffer) => (
+            <div key={jobOffer._id} className="job-container">
+              <img src={jobOffer.companyPhoto} style={{ width: "160px" }}></img>
+              <br></br>
+              <img src={jobOffer.companyLogo} style={{ width: "80px" }}></img>
+              <p>{jobOffer.companyName}</p>
+              <p className="job-offer-title">
+                {/* Link to the appropriate job detail page */}
+                {isLoggedIn && (
+                  <button
+                    onClick={() => getJobDetailPageLink(jobOffer)}
+                    style={{ color: "rgb(0, 217, 255)" }}
+                  >
+                    {jobOffer.jobTitle}
+                  </button>
+                )}
+                {!isLoggedIn && <Link to={"/log-in"}>{jobOffer.jobTitle}</Link>}
+              </p>
+              <p>{jobOffer.jobLocation}</p>
+              <p>{jobOffer.contractType}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </>
   );
 }
