@@ -92,8 +92,8 @@ function RecruiterProfilePage() {
       <div>
         <NavBarRecruiter />
       </div>
-      <div>
-        <h2> Your Profile</h2>
+      <div className="my-profile-page">
+        <h2> My Profile</h2>
 
         {recruiterData && (
           <form>
@@ -107,7 +107,7 @@ function RecruiterProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>{recruiterData.firstName}</span>
+                <span className="details">{recruiterData.firstName}</span>
               )}
             </label>
             <label>
@@ -120,7 +120,7 @@ function RecruiterProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>{recruiterData.lastName}</span>
+                <span className="details">{recruiterData.lastName}</span>
               )}
             </label>
             <label>
@@ -133,7 +133,7 @@ function RecruiterProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>{recruiterData.email}</span>
+                <span className="details">{recruiterData.email}</span>
               )}
             </label>
             <label>
@@ -146,10 +146,10 @@ function RecruiterProfilePage() {
                   onChange={handleInputChange}
                 />
               ) : (
-                <span>********</span>
+                <span className="details">********</span>
               )}
             </label>
-            <label>
+            <label style={{ width: "80px", marginLeft: "660px" }}>
               photoProfile:
               {isEditing ? (
                 <input

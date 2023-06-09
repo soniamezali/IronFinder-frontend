@@ -44,6 +44,7 @@ function JobSeekerDetailOffer() {
           <button
             className="close-button"
             onClick={() => dialog.current.close()}
+            style={{ marginLeft: "450px" }}
           >
             X
           </button>
@@ -57,9 +58,13 @@ function JobSeekerDetailOffer() {
       <div>
         <h2>Job Offer Details</h2>
         <div className="job-offer-details">
-          <img src={oneJobOffer.companyLogo} alt={oneJobOffer.jobTitle} />
+          <img
+            src={oneJobOffer.companyLogo}
+            alt={oneJobOffer.jobTitle}
+            style={{ width: "80px" }}
+          />
           <h3>{oneJobOffer.companyName}</h3>
-          <h2>{oneJobOffer.jobTitle}</h2>
+          <h3>{oneJobOffer.jobTitle}</h3>
           <p>
             <span>Contract Type: </span>
             <span className="details">{oneJobOffer.contractType}</span>

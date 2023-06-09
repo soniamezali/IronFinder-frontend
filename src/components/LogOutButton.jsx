@@ -16,8 +16,11 @@ function LogOutButton() {
   };
 
   return (
-    <span className="log-out">
-      <button onClick={handleLogOut}> Log Out </button>
+    <span>
+      <button className="log-out" onClick={handleLogOut}>
+        {" "}
+        Log Out{" "}
+      </button>
     </span>
   );
 }
